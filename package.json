@@ -1,0 +1,22 @@
+{
+  "name": "@jrontend/monorepo",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+      "prettier": "prettier --write ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kodizim/jrontend.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kodizim/jrontend/issues"
+  },
+  "homepage": "https://github.com/kodizim/jrontend#readme"
+}

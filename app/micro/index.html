@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Micro Jrontend</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      .container {
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+      }
+
+      .header {
+        background-color: #333;
+        color: #fff;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .main {
+        display: flex;
+        flex: 1;
+        height: calc(100% - 100px);
+      }
+
+      .navbar {
+        background-color: #eee;
+        width: 400px;
+        padding: 10px;
+        box-sizing: border-box;
+      }
+
+      .selector {
+        display: flex;
+        flex-direction: column;
+      }
+      .box {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #ccc;
+        height: 50px;
+        margin: 10px 0;
+        cursor: pointer;
+      }
+
+      .box.red {
+        background-color: #ff5252;
+      }
+
+
+      .box.blue {
+        background-color: #2196f3;
+      }
+
+      .box.green {
+        background-color: #26b93e;
+      }
+      .box.black {
+        background-color: #050502;
+        color: #fff;
+      }
+
+      .app {
+        flex: 1;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .color-box {
+        background-color: #ccc;
+        height: 100px;
+        width: 100%;
+        box-sizing: border-box;
+        border: 2px solid #fff;
+      }
+
+      .color-box.red {
+        background-color: #ff5252;
+      }
+
+      .color-box.blue {
+        background-color: #2196f3;
+      }
+
+      .color-box.green {
+        background-color: #26b93e;
+      }
+
+      .color-box.blue {
+        background-color: #5ca7f1;
+      }
+
+      .color-box.black {
+        background-color: #050502;
+      }
+
+      .publish-button {
+        background-color: #2196f3;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        cursor: pointer;
+        margin-top: 10px;
+      }
+
+      .header {
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .footer {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        height: 50px;
+      }
+
+      .content {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: 1;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h1>Micro Jrontend</h1>
+      </div>
+      <div class="main">
+        <div class="navbar">
+          <div class="selector">
+            <div class="box black" draggable="true">Next.js</div>
+            <div class="box blue" draggable="true">React</div>
+            <div class="box green" draggable="true">Vue</div>
+            <div class="box red" draggable="true">Angular</div>
+          </div>
+          <button class="publish-button">Publish</button>
+        </div>
+        <div class="app">
+          <div class="color-box header">Header</div>
+          <div class="color-box content">Main</div>
+          <div class="color-box footer">Footer</div>
+        </div>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
+
