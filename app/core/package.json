@@ -1,8 +1,12 @@
 {
   "name": "@jrontend-apps/core",
   "version": "1.0.0",
+  "bin": "bin/create-micro-jrontend.js",
   "scripts": {
-    "start": "node src/index.js"
+    "start": "node bin/create-micro-jrontend.js"
+  },
+  "dependencies": {
+    "inquirer": "^8.2.5"
   },
   "keywords": [],
   "author": "",
