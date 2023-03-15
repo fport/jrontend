@@ -1,22 +1,32 @@
 {
   "name": "@jrontend/monorepo",
+  "license": "MIT",
   "private": true,
   "workspaces": [
     "apps/*",
     "packages/*"
   ],
   "scripts": {
-      "prettier": "prettier --write ."
+    "build": "turbo run build",
+    "dev": "turbo run dev",
+    "start": "turbo run start",
+    "lint": "turbo run lint",
+    "clean": "turbo run clean",
+    "prettier": "prettier --write ."
+  },
+
+  "devDependencies": {
+    "eslint": "^8.28.0",
+    "eslint-config-turbo": "latest",
+    "turbo": "latest"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/kodizim/jrontend.git"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "bugs": {
     "url": "https://github.com/kodizim/jrontend/issues"
   },
-  "homepage": "https://github.com/kodizim/jrontend#readme"
+  "homepage": "https://github.com/kodizim/jrontend#readme",
+  "packageManager": "pnpm@7.15.0"
 }

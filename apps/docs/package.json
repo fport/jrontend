@@ -1,0 +1,7 @@
+{
+  "name": "docs",
+  "version": "1.0.0",
+  "dependencies": {
+    "@jrontend/ui": "workspace:*"
+  }
+}
