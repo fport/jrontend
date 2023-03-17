@@ -1,1 +1,1 @@
-# 🐣 @jrontend/monorepo
+# 🐣 Jrontend Monorepo
