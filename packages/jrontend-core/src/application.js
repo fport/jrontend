@@ -1,12 +1,18 @@
-/*
- @desc: This is the entry point for the application
- @params: answer - the answer to patterns, a string
-*/
+const { createClient } = require('./create-client')
 
-const createProject = async (answer) => {
-    console.log('Creating project with name: ' + answer.framework)
+const createBoilerplate = async (projectOptions) => {
+    switch (projectOptions.projectType) {
+        case 'Client App':
+            await createClient({ ...projectOptions })
+            break
+        case 'Api Server':
+            console.log('Not supported yet. Sorry! :(')
+            break
+        default:
+            break
+    }
 }
 
 module.exports = {
-    createProject,
+    createBoilerplate,
 }
