@@ -10,7 +10,7 @@ const { createProject } = require('../src/application')
             type: 'input',
             message: 'Pick the name of your app:',
             name: 'name',
-            default: 'host',
+            default: 'jrontend-fun',
         },
         {
             type: 'list',
@@ -22,6 +22,26 @@ const { createProject } = require('../src/application')
     ])
 
     if (answers.framework === 'module-federation') {
-        createProject(answers)
+        const projectType = await inquirer.prompt([
+            {
+                type: 'list',
+                message: 'Project Type:',
+                name: 'projectType',
+                choices: ['composer', 'fragment'],
+                default: 'composer',
+            },
+            {
+                type: 'input',
+                message: 'Pick the name:',
+                name: 'projectName',
+                default: 'composer',
+            },
+            {
+                type: 'input',
+                message: 'Port number:',
+                name: 'port',
+                default: '3000',
+            },
+        ])
     }
 })()
