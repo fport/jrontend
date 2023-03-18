@@ -25,23 +25,41 @@ const path = require('path')
             type: 'list',
             message: 'Project Type:',
             name: 'projectType',
-            choices: ['Client App', 'Api server'],
+            choices: ['Client App', 'Api Server'],
             default: 'Client App',
         },
     ])
 
-    if (answers.projectType === 'Client App') {
-        const composerTemplateList = fs
-            .readdirSync(path.join(__dirname, '../templates/composer'))
-            .sort()
+    if (!fs.existsSync(answers?.name)) {
+        await fs.mkdirSync(answers?.name)
+    }
 
-        const composerAnswers = await inquirer.prompt([
+    if (answers.projectType === 'Client App') {
+        const client = await inquirer.prompt([
             {
                 type: 'list',
                 message: 'Client Type:',
                 name: 'clientType',
                 choices: ['Composer', 'Fragment'],
                 default: 'Composer',
+            },
+        ])
+
+        const composerTemplateList = fs
+            .readdirSync(
+                path.join(
+                    __dirname,
+                    `../templates/${client.clientType.toLowerCase()}`
+                )
+            )
+            .sort()
+
+        const composerAnswers = await inquirer.prompt([
+            {
+                type: 'input',
+                message: 'Client name:',
+                name: 'clientName',
+                default: `${client.clientType}-app`,
             },
             {
                 type: 'input',
@@ -71,10 +89,12 @@ const path = require('path')
                 default: 'None',
             },
         ])
-        console.log('Creating project...')
+
         createBoilerplate({
             ...answers,
+            ...client,
             ...composerAnswers,
         })
+        console.log('Ready project...')
     }
 })()
