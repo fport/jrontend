@@ -1,7 +1,6 @@
 {
   "name": "@jrontend/monorepo",
   "license": "MIT",
-  "private": true,
   "workspaces": [
     "apps/*",
     "packages/*"
