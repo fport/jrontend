@@ -1,7 +1,9 @@
 {
-  "name": "@jrontend-apps/core",
-  "version": "1.0.0",
-  "bin": "bin/create-micro-jrontend.js",
+  "name": "@jrontends/core",
+  "version": "0.0.1",
+  "bin": {
+    "create-micro-jrontend": "/bin/create-micro-jrontend.js"
+  },
   "scripts": {
     "start": "node bin/create-micro-jrontend.js"
   },
