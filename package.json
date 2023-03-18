@@ -11,7 +11,8 @@
     "start": "turbo run start",
     "lint": "turbo run lint",
     "clean": "turbo run clean",
-    "prettier": "prettier --write ."
+    "prettier": "prettier --write .",
+    "publish-packages": "turbo run build lint && changeset version && changeset publish"
   },
   "devDependencies": {
     "@changesets/cli": "^2.26.0",
