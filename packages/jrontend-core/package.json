@@ -8,6 +8,7 @@
     "start": "node bin/create-micro-jrontend.js"
   },
   "dependencies": {
+    "fs-extra": "^11.1.0",
     "inquirer": "^8.2.5"
   },
   "keywords": [],
