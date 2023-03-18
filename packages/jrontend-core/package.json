@@ -1,6 +1,6 @@
 {
   "name": "@jrontends/core",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "bin": {
     "create-micro-jrontend": "/bin/create-micro-jrontend.js"
   },
