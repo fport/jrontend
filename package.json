@@ -15,6 +15,7 @@
     "prettier": "prettier --write ."
   },
   "devDependencies": {
+    "@changesets/cli": "^2.26.0",
     "eslint": "^8.36.0",
     "eslint-config-turbo": "latest",
     "turbo": "latest"
