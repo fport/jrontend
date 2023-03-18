@@ -25,7 +25,7 @@ const createBoilerplate = async ({
     cssPreprocessor,
 }) => {
     const lang = language.toLocaleLowerCase() === 'javascript' ? 'js' : 'ts'
-    const projectFolderPath = path.join(__dirname, `../${name}`)
+    const projectFolderPath = path.join(__dirname, `./${name}`)
 
     if (!fs.existsSync(projectFolderPath)) {
         fs.mkdirSync(projectFolderPath)
