@@ -25,11 +25,7 @@ const createBoilerplate = async ({
     cssPreprocessor,
 }) => {
     const lang = language.toLocaleLowerCase() === 'javascript' ? 'js' : 'ts'
-    const projectFolderPath = path.join(__dirname, `./${name}`)
-
-    if (!fs.existsSync(projectFolderPath)) {
-        fs.mkdirSync(projectFolderPath)
-    }
+    await fs.mkdirSync(`${name}`)
 
     const templatePath = path.join(
         __dirname,
@@ -40,8 +36,8 @@ const createBoilerplate = async ({
         `../templates/${clientType?.toLocaleLowerCase()}/${framework.toLocaleLowerCase()}/${lang}`
     )
 
-    await fse.copy(templatePath, projectFolderPath)
-    await fse.copy(languagePath, projectFolderPath)
+    await fse.copy(templatePath, name)
+    await fse.copy(languagePath, name)
 }
 
 module.exports = {
