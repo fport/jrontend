@@ -1,6 +1,7 @@
 const fs = require('fs')
 const path = require('path')
 const fse = require('fs-extra')
+const { replaceConfig } = require('./replace-config')
 
 /**
  * @description This function creates the boilerplate for the project.
@@ -13,17 +14,18 @@ const fse = require('fs-extra')
  * @param {string} cssPreprocessor - The CSS preprocessor of the project.
  * @params {string} clientName - The client name of the project.
  */
-const createClient = async ({
-    name,
-    pattern,
-    projectType,
-    clientType,
-    port,
-    framework,
-    language,
-    cssPreprocessor,
-    clientName,
-}) => {
+const createClient = async (data) => {
+    const {
+        name,
+        pattern,
+        projectType,
+        clientType,
+        port,
+        framework,
+        language,
+        cssPreprocessor,
+        clientName,
+    } = data
     const lang = language.toLocaleLowerCase() === 'javascript' ? 'js' : 'ts'
     const projectPath = `${name}/${clientName}`
     await fs.mkdirSync(projectPath)
@@ -39,6 +41,8 @@ const createClient = async ({
 
     await fse.copy(templatePath, projectPath)
     await fse.copy(languagePath, projectPath)
+
+    replaceConfig(data)
 }
 
 module.exports = {
