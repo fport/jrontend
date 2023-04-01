@@ -7,10 +7,10 @@ const packageJson = require('../package.json')
 const devConfig = {
     mode: 'development',
     output: {
-        publicPath: 'http://localhost:8082/',
+        publicPath: 'http://localhost:{{PORT}}/',
     },
     devServer: {
-        port: 8082,
+        port: {{PORT}},
         historyApiFallback: {
             index: 'index.html',
         },
@@ -20,7 +20,7 @@ const devConfig = {
             name: 'auth',
             filename: 'remoteEntry.js',
             exposes: {
-                './AuthApp': './src/bootstrap',
+                './{{CLIENT_NAME}}App': './src/bootstrap',
             },
             shared: packageJson.dependencies,
         }),

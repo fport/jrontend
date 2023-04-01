@@ -1,5 +1,5 @@
 <template>
 <div>
-  <h1>Vue App</h1>
+  <h1>Welcome {{CLIENT_NAME}}</h1>
 </div>
 </template>

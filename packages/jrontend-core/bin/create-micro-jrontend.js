@@ -40,8 +40,8 @@ const path = require('path')
                 type: 'list',
                 message: 'Client Type:',
                 name: 'clientType',
-                choices: ['Composer', 'Fragment'],
-                default: 'Composer',
+                choices: ['composer', 'fragment'],
+                default: 'composer',
             },
         ])
 
@@ -59,7 +59,7 @@ const path = require('path')
                 type: 'input',
                 message: 'Client name:',
                 name: 'clientName',
-                default: `${client.clientType}-app`,
+                default: `${client.clientType}`,
             },
             {
                 type: 'input',
