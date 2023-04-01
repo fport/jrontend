@@ -28,6 +28,16 @@ const createClient = async (data) => {
     } = data
     const lang = language.toLocaleLowerCase() === 'javascript' ? 'js' : 'ts'
     const projectPath = `${name}/${clientName}`
+    const defaultOrchestra = {
+        composer: '',
+        fragments: [],
+        server: [],
+    }
+
+    await fs.writeFileSync(
+        `${name}/orchestra.json`,
+        JSON.stringify(defaultOrchestra)
+    )
     await fs.mkdirSync(projectPath)
 
     const templatePath = path.join(

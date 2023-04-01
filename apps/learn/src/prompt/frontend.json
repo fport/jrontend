@@ -1,0 +1,9 @@
+{
+    "title": "frontend",
+    "list": [
+       "How to console.log('hello world') on React.js",
+       "How to create and nest components on React.js",
+       "How to add markup and styles on React.js",
+       "How to share data between components on React.js"
+    ]
+}
