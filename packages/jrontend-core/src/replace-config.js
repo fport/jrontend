@@ -1,5 +1,6 @@
 const glob = require('glob')
 const fs = require('fs')
+const path = require('path')
 
 /*
  * @desc This function replaces the template variables in the files
@@ -10,7 +11,7 @@ const fs = require('fs')
  * @param {string} name - The name of the directory to replace the template variables in.
  * @param {object} config - The object containing the values to replace the template variables with.
  */
-const templateFile = (fileName, replacements) => {
+const templateFile = (fileName, replacements, clientType) => {
     const fileContent = fs.readFileSync(fileName, 'utf8').toString()
 
     const template = Object.entries(replacements).reduce(
@@ -31,6 +32,50 @@ const replace = (name, config) => {
             templateFile(file, config)
         }
     })
+}
+
+const changeModuleFedaration = ({ name, clientName, clientType }) => {
+    if (clientType === 'fragment') {
+        const webpackDevServerPath = `${name}/composer/config/webpack.dev.js`
+        // const test = fs.readFileSync(webpackDevServerPath, 'utf8')
+        // console.log(webpackDevServerPath, 'osman test =>', test)
+
+        fs.readFile(webpackDevServerPath, 'utf8', (err, data) => {
+            if (err) {
+                console.error(err)
+                return
+            }
+            const remotesRegex = /remotes:(.*),/s
+            const remotesMatch = data.match(remotesRegex)
+
+            if (remotesMatch) {
+                const remotesStr = remotesMatch[1].trim()
+                const remotes = eval(`(${remotesStr})`)
+                console.log(remotes)
+            } else {
+                console.log('remotes objesi bulunamadı.')
+            } // const config = JSON.parse(data)
+            //
+            // const remotes = config.plugins.find(
+            //     (plugin) => plugin instanceof ModuleFederationPlugin
+            // ).options.remotes
+            //
+            // remotes.newRemote = 'newRemote@http://localhost:8082/remoteEntry.js'
+            //
+            // fs.writeFile(
+            //     webpackDevServerPath,
+            //     JSON.stringify(config, null, 2),
+            //     (err) => {
+            //         if (err) {
+            //             console.error(err)
+            //             return
+            //         }
+            //
+            //         console.log('Dosya başarıyla kaydedildi.')
+            //     }
+            // )
+        })
+    }
 }
 
 /*
@@ -55,7 +100,8 @@ const createConfig = ({ clientName, clientType, port }) => {
  */
 const replaceConfig = (data) => {
     const config = createConfig(data)
-    replace(data.name, config)
+    replace(data.name, config, data.clientType)
+    changeModuleFedaration(data)
 }
 
 module.exports = {
