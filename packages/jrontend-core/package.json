@@ -7,7 +7,8 @@
   "scripts": {
     "start": "node bin/create-micro-jrontend.js"
   },
-  "dependencies": {
+  "devDependencies": {
+    "chalk": "^5.2.0",
     "fs-extra": "^11.1.0",
     "glob": "^9.3.0",
     "inquirer": "^8.2.5"

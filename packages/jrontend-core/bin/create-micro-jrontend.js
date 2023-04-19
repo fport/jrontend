@@ -5,9 +5,8 @@ const { createBoilerplate } = require('../src/application')
 const fs = require('fs')
 const path = require('path')
 
-;(async () => {
-    console.info('Welcome to the micro frontend generator')
-    const answers = await inquirer.prompt([
+const promptProjectConfig = async () => {
+    return inquirer.prompt([
         {
             type: 'input',
             message: 'App name:',
@@ -16,26 +15,23 @@ const path = require('path')
         },
         {
             type: 'list',
-            message: 'Pattern:',
-            name: 'pattern',
-            choices: ['module-federation'],
-            default: 'module-federation',
-        },
-        {
-            type: 'list',
             message: 'Project Type:',
             name: 'projectType',
             choices: ['Client App', 'Api Server'],
             default: 'Client App',
         },
+        /*{
+            type: 'list',
+            message: 'Pattern:',
+            name: 'pattern',
+            choices: ['module-federation'],
+            default: 'module-federation',
+        },*/
     ])
+}
 
-    if (!fs.existsSync(answers?.name)) {
-        await fs.mkdirSync(answers?.name)
-    }
-
-    if (answers.projectType === 'Client App') {
-        const client = await inquirer.prompt([
+    const promptClientConfig = async () => {
+        return inquirer.prompt([
             {
                 type: 'list',
                 message: 'Client Type:',
@@ -44,22 +40,31 @@ const path = require('path')
                 default: 'composer',
             },
         ])
+    }
 
+const promptServerConfig = async () => {
+    return inquirer.prompt([
+        {
+            type: 'list',
+            message: 'Server framework:',
+            name: 'server',
+            choices: ['express'],
+            default: 'express',
+        },
+    ])
+}
+
+    const promptComposerConfig = async (clientType) => {
         const composerTemplateList = fs
-            .readdirSync(
-                path.join(
-                    __dirname,
-                    `../templates/${client.clientType.toLowerCase()}`
-                )
-            )
+            .readdirSync(path.join(__dirname, `../templates/${clientType.toLowerCase()}`))
             .sort()
 
-        const composerAnswers = await inquirer.prompt([
+        return inquirer.prompt([
             {
                 type: 'input',
                 message: 'Client name:',
                 name: 'clientName',
-                default: `${client.clientType}`,
+                default: `${clientType}`,
             },
             {
                 type: 'input',
@@ -85,16 +90,31 @@ const path = require('path')
                 type: 'list',
                 message: 'With CSS Preprocessor:',
                 name: 'cssPreprocessor',
-                choices: ['None', 'Sass', 'Less', 'Stylus', 'Tailwind'],
+                choices: ['None', 'Tailwind'],
                 default: 'None',
             },
         ])
+    };
 
-        createBoilerplate({
-            ...answers,
-            ...client,
-            ...composerAnswers,
-        })
-        console.log('Ready project...')
-    }
-})()
+    (async () => {
+        const projectConfig = await promptProjectConfig()
+
+        if (!fs.existsSync(projectConfig?.name)) {
+            await fs.mkdirSync(projectConfig?.name)
+        }
+
+        if (projectConfig?.projectType === 'Client App') {
+            const clientConfig = await promptClientConfig()
+            const composerConfig = await promptComposerConfig(clientConfig.clientType)
+
+            createBoilerplate({ ...projectConfig, ...clientConfig, ...composerConfig })
+            console.log('Ready project...')
+        }
+
+        if (projectConfig?.projectType === 'Api Server') {
+            const serverConfig = await promptServerConfig()
+
+            createBoilerplate({ ...projectConfig, ...serverConfig })
+            console.log('Ready project...')
+        }
+    })()
