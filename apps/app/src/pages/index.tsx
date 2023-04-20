@@ -28,16 +28,37 @@ const Home: React.FC = () => {
                         <span>easy</span>
                         <span>micro-frontend</span>
                     </div>
-                    <div className={styles.command}>
-                        <span>npx @jrontends/core@latest</span>
-                        <CopyToClipboard text="npx @jrontends/core@latest" onCopy={handleCopyClick}>
-                            <button className={styles.copyButton}>
-                                {isCopied ? 'Copied!' : 'Copy'} <span role="img" aria-label="copy">📋</span>
-                            </button>
-                        </CopyToClipboard>
+                    <div>
+                        <div className={styles.command}>
+                            <span>npx @jrontends/core@latest</span>
+                            <CopyToClipboard text='npx @jrontends/core@latest' onCopy={handleCopyClick}>
+                                <button className={styles.copyButton}>
+                                    {isCopied ? 'Copied!' : 'Copy'} <span role='img' aria-label='copy'>📋</span>
+                                </button>
+                            </CopyToClipboard>
+                        </div>
+                        <div className={styles.links}>
+                            <a
+                                className={styles.link}
+                                href='https://github.com/kodizim/jrontend'
+                                target='_blank'
+                                rel='noopener noreferrer'
+                            >
+                                GitHub 🪄
+                            </a>
+                            <a
+                                className={styles.link}
+                                href='https://www.npmjs.com/package/@jrontends/core'
+                                target='_blank'
+                                rel='noopener noreferrer'
+                            >
+                                npm 📦
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
+
         </>
     )
 }
