@@ -1,19 +1,19 @@
 {
   "name": "@jrontends/core",
-  "version": "1.0.0",
+  "version": "0.6.1",
   "bin": {
     "create-micro-jrontend": "/bin/create-micro-jrontend.js"
   },
   "scripts": {
     "start": "node bin/create-micro-jrontend.js"
   },
-  "devDependencies": {
+  "dependencies": {
     "chalk": "^5.2.0",
     "fs-extra": "^11.1.0",
     "glob": "^9.3.0",
     "inquirer": "^8.2.5"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": ["micro-frontend", "jrontend", "jrontends", "jrontend-core", "jrontends-core"],
+  "author": "~furkanportakal",
   "license": "ISC"
 }
