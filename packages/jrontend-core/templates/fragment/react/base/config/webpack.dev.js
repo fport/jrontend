@@ -21,6 +21,7 @@ const devConfig = {
             filename: 'remoteEntry.js',
             exposes: {
                 './{{CLIENT_NAME}}App': './src/bootstrap',
+                './App': './src/App'
             },
             shared: packageJson.dependencies,
         }),

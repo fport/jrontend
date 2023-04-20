@@ -1,4 +1,5 @@
 const { createClient } = require('./create-client')
+const { createServer } = require('./create-server')
 
 /*
  * @desc This is the main entry point for the application.
@@ -12,7 +13,7 @@ const createBoilerplate = async (projectOptions) => {
             await createClient({ ...projectOptions })
             break
         case 'Api Server':
-            console.log('Not supported yet. Sorry! :(')
+            await createServer({ ...projectOptions })
             break
         default:
             break

@@ -1,16 +1,14 @@
-import React from 'react'
-import { Switch, Route, Router } from 'react-router-dom'
+import "./App.css"
+import React, { useState } from 'react'
+export default () => {
+    const [state, setState] = useState(0)
 
-export default ({ history }) => {
     return (
-        <div>
-            <Router history={history}>
-                <Switch>
-                    <Route path="/">
-                        <div>{{ CLIENT_NAME }} </div>
-                    </Route>
-                </Switch>
-            </Router>
+        <div className="fragment-container">
+            <div>Welcome to {{ CLIENT_NAME }} App</div>
+            <span>{state}</span>
+            <button onClick={() => setState(state + 1)}>Click me</button>
         </div>
+
     )
 }

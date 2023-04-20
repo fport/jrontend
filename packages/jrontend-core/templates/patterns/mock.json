@@ -1,0 +1,10 @@
+{
+  "patterns": [
+    {
+      "name": "webpack-module-federation"
+    },
+    {
+      "name": "vite-module-federation"
+    }
+  ]
+}
