@@ -5,7 +5,7 @@ export default () => {
 
     return (
         <div className="fragment-container">
-            <div>Welcome to {{ CLIENT_NAME }} App</div>
+            <div>Welcome to fragment App</div>
             <span>{state}</span>
             <button onClick={() => setState(state + 1)}>Click me</button>
         </div>

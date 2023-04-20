@@ -77,7 +77,7 @@ const promptServerConfig = async () => {
                 message: 'Framework/Library:',
                 name: 'framework',
                 choices: composerTemplateList,
-                default: 'react',
+                default: 'nextjs',
             },
             {
                 type: 'list',

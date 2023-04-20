@@ -1,0 +1,8 @@
+.fragment-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px dashed #E3FE73;
+    padding: 1rem;
+}
