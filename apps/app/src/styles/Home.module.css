@@ -76,6 +76,29 @@
     outline: none;
 }
 
+.links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+}
+
+.link {
+    background-color: #09F0C109;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    padding: 8px 12px;
+    font-size: 1rem;
+    text-decoration: none;
+    margin: 0 8px;
+    transition: background-color 0.3s;
+}
+
+.link:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
 @media screen and (max-width: 768px) {
     .text {
         font-size: 3rem;
